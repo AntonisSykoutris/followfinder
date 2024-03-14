@@ -1,13 +1,64 @@
 'use client';
 
-import Section from '@/components/General/Section';
+import {
+  MultiFileDropzone,
+  type FileState
+} from '@/components/General/MultiFileDropzone';
+import { useEdgeStore } from '@/lib/edgestore';
+import { useState } from 'react';
+import Section from '../General/Section';
 
 type Props = {};
 
 export default function Hero({}: Props) {
+  const [fileUrls, setFileUrls] = useState<string[] | undefined>();
+  const [fileStates, setFileStates] = useState<FileState[]>([]);
+  const { edgestore } = useEdgeStore();
+
+  function updateFileProgress(key: string, progress: FileState['progress']) {
+    setFileStates(fileStates => {
+      const newFileStates = structuredClone(fileStates);
+      const fileState = newFileStates.find(fileState => fileState.key === key);
+      if (fileState) {
+        fileState.progress = progress;
+      }
+      return newFileStates;
+    });
+  }
+
   return (
     <Section className='hero_section'>
-      <h1 className='text-6xl'>HERO SECTION</h1>
+      <MultiFileDropzone
+        value={fileStates}
+        onChange={files => {
+          setFileStates(files);
+        }}
+        dropzoneOptions={{ maxFiles: 2, maxSize: 2000 }}
+        onFilesAdded={async addedFiles => {
+          setFileStates([...fileStates, ...addedFiles]);
+          await Promise.all(
+            addedFiles.map(async addedFileState => {
+              try {
+                const res = await edgestore.publicFiles.upload({
+                  file: addedFileState.file,
+                  onProgressChange: async progress => {
+                    updateFileProgress(addedFileState.key, progress);
+                    if (progress === 100) {
+                      // wait 1 second to set it to complete
+                      // so that the user can see the progress bar at 100%
+                      await new Promise(resolve => setTimeout(resolve, 1000));
+                      updateFileProgress(addedFileState.key, 'COMPLETE');
+                    }
+                  }
+                });
+                console.log(res);
+              } catch (err) {
+                updateFileProgress(addedFileState.key, 'ERROR');
+              }
+            })
+          );
+        }}
+      />
     </Section>
   );
 }

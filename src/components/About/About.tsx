@@ -6,7 +6,7 @@ type Props = {};
 
 export default function About({}: Props) {
   return (
-    <Section className='about_section'>
+    <Section>
       <h1 className='text-6xl'>ABOUT SECTION</h1>
     </Section>
   );
