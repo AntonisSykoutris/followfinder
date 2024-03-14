@@ -51,7 +51,7 @@ export default function Hero({}: Props) {
                     }
                   }
                 });
-                console.log(res);
+                // console.log(res);
               } catch (err) {
                 updateFileProgress(addedFileState.key, 'ERROR');
               }
