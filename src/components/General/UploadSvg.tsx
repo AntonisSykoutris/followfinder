@@ -1,7 +1,7 @@
 'use client';
 
 import { cn } from '@/lib/utils';
-import { MotionValue, motion } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 type Props = {
   className?: string;

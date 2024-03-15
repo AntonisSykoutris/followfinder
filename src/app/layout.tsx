@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import '@uploadthing/react/styles.css';
 import './globals.css';
 import SmoothScroll from '@/components/General/SmoothScroll';
-import { EdgeStoreProvider } from '@/lib/edgestore';
 
 // export const metadata: Metadata = {
 //   openGraph: {
@@ -34,11 +33,9 @@ export default function RootLayout({ children }: Props) {
         content='user-scalable=no, width=device-width, initial-scale=1.0'
       />
       <body>
-        <EdgeStoreProvider>
-          <SmoothScroll>
-            <main className='flex flex-col items-center'>{children}</main>
-          </SmoothScroll>
-        </EdgeStoreProvider>
+        <SmoothScroll>
+          <main className='flex flex-col items-center'>{children}</main>
+        </SmoothScroll>
       </body>
     </html>
   );

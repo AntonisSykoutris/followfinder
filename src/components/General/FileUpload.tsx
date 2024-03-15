@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, ChangeEvent, FormEvent, useCallback } from 'react';
-import { useDropzone } from 'react-dropzone';
+import { FileRejection, useDropzone } from 'react-dropzone';
 import UploadSvg from './UploadSvg';
 import { LuFileJson, LuTrash2 } from 'react-icons/lu';
 import { formatFileSize } from '@/lib/utils';
@@ -13,36 +13,39 @@ type Props = {
 
 export default function FileUpload({ className }: Props) {
   const [files, setFiles] = useState<File[]>([]);
-  const [rejected, setRejected] = useState<File[]>([]);
+  const [rejected, setRejected] = useState<FileRejection[]>([]);
 
-  const onDrop = useCallback((acceptedFiles: any, rejectedFiles: any) => {
-    const totalFiles = files.length + acceptedFiles.length;
+  const onDrop = useCallback(
+    (acceptedFiles: File[], rejectedFiles: FileRejection[]) => {
+      const totalFiles = files.length + acceptedFiles.length;
 
-    if (totalFiles > 2) {
-      // If adding the new files would exceed the limit, remove the first two files
-      setFiles(previousFiles => previousFiles.slice(2));
-    }
+      if (totalFiles > 2) {
+        // If adding the new files would exceed the limit, remove the first two files
+        setFiles(previousFiles => previousFiles.slice(2));
+      }
 
-    setFiles(previousFiles => {
-      console.log('Files Length ' + previousFiles.length);
-      const newFiles = [
-        ...previousFiles.slice(0, 2),
-        ...acceptedFiles.map((file: File) => Object.assign(file))
-      ];
+      setFiles(previousFiles => {
+        console.log('Files Length ' + previousFiles.length);
+        const newFiles = [
+          ...previousFiles.slice(0, 2),
+          ...acceptedFiles.map((file: File) => Object.assign(file))
+        ];
 
-      // Limiting to 2 files
-      return newFiles.slice(0, 2);
-    });
+        // Limiting to 2 files
+        return newFiles.slice(0, 2);
+      });
 
-    if (rejectedFiles?.length) {
-      setRejected(previousFiles => [...previousFiles, ...rejectedFiles]);
-    }
-  }, []);
+      if (rejectedFiles?.length) {
+        setRejected(previousFiles => [...previousFiles, ...rejectedFiles]);
+      }
+    },
+    []
+  );
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
-    accept: {
-      'application/json': ['.json']
-    },
+    // accept: {
+    //   'application/json': ['.json	']
+    // },
     maxSize: 1024 * 1000,
     maxFiles: 2,
     onDrop
@@ -58,7 +61,7 @@ export default function FileUpload({ className }: Props) {
   };
 
   const removeRejected = (name: string) => {
-    setRejected(files => files.filter(file => file.name !== name));
+    setRejected(files => files.filter(file => file.file.name !== name));
   };
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
