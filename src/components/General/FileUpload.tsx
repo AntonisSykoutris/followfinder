@@ -61,6 +61,12 @@ export default function FileUpload({ className }: Props) {
     setRejected(files => files.filter(file => file.name !== name));
   };
 
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    if (!hasTwoFiles) return;
+  };
+
   //   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
   //     e.preventDefault();
 
@@ -102,7 +108,7 @@ export default function FileUpload({ className }: Props) {
   // Check if there are already 2 files uploaded
   const hasTwoFiles = files.length === 2;
   return (
-    <form className='  w-1/3'>
+    <form onSubmit={handleSubmit} className=''>
       <div
         {...getRootProps({ className: className })}
         onMouseEnter={() => setIsHovered(true)}
@@ -172,9 +178,9 @@ export default function FileUpload({ className }: Props) {
         <motion.button
           type='submit'
           disabled={hasTwoFiles}
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.9 }}
-          className=' instagram h-1/2 w-1/2 self-center rounded-full px-4 py-2 text-lg font-bold text-white  hover:cursor-pointer'
+          whileHover={hasTwoFiles ? { scale: 1.05 } : 'none'}
+          whileTap={hasTwoFiles ? { scale: 0.9 } : 'none'}
+          className={` ${hasTwoFiles ? 'instagram' : 'bg-[#e0e0e0]'}   self-center rounded-full px-8 py-2 text-lg font-bold text-white  hover:cursor-pointer`}
         >
           Upload
         </motion.button>
