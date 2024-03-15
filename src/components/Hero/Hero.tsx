@@ -7,6 +7,8 @@ import {
 import { useEdgeStore } from '@/lib/edgestore';
 import { useState } from 'react';
 import Section from '../General/Section';
+import FileUpload from '../General/FileUpload';
+import Example from '../General/Example';
 
 type Props = {};
 
@@ -28,37 +30,7 @@ export default function Hero({}: Props) {
 
   return (
     <Section className='hero_section'>
-      <MultiFileDropzone
-        value={fileStates}
-        onChange={files => {
-          setFileStates(files);
-        }}
-        dropzoneOptions={{ maxFiles: 2, maxSize: 2000 }}
-        onFilesAdded={async addedFiles => {
-          setFileStates([...fileStates, ...addedFiles]);
-          await Promise.all(
-            addedFiles.map(async addedFileState => {
-              try {
-                const res = await edgestore.publicFiles.upload({
-                  file: addedFileState.file,
-                  onProgressChange: async progress => {
-                    updateFileProgress(addedFileState.key, progress);
-                    if (progress === 100) {
-                      // wait 1 second to set it to complete
-                      // so that the user can see the progress bar at 100%
-                      await new Promise(resolve => setTimeout(resolve, 1000));
-                      updateFileProgress(addedFileState.key, 'COMPLETE');
-                    }
-                  }
-                });
-                // console.log(res);
-              } catch (err) {
-                updateFileProgress(addedFileState.key, 'ERROR');
-              }
-            })
-          );
-        }}
-      />
+      <FileUpload className='active:shadow-none" flex  flex-col  gap-2 rounded-2xl border-2 border-dashed border-black bg-white px-6 py-3 font-semibold uppercase text-black transition-all duration-300 hover:translate-x-[-4px] hover:translate-y-[-4px] hover:cursor-pointer hover:rounded-md hover:shadow-[4px_4px_0px_black] ' />
     </Section>
   );
 }

@@ -14,13 +14,26 @@ type Props = {
 export default function FileUpload({ className }: Props) {
   const [files, setFiles] = useState<File[]>([]);
   const [rejected, setRejected] = useState<File[]>([]);
-  const [popLayout, setPopLayout] = useState(false);
 
   const onDrop = useCallback((acceptedFiles: any, rejectedFiles: any) => {
-    setFiles(previousFiles => [
-      ...previousFiles,
-      ...acceptedFiles.map((file: File) => Object.assign(file))
-    ]);
+    const totalFiles = files.length + acceptedFiles.length;
+
+    if (totalFiles > 2) {
+      // If adding the new files would exceed the limit, remove the first two files
+      setFiles(previousFiles => previousFiles.slice(2));
+    }
+
+    setFiles(previousFiles => {
+      console.log('Files Length ' + previousFiles.length);
+      const newFiles = [
+        ...previousFiles.slice(0, 2),
+        ...acceptedFiles.map((file: File) => Object.assign(file))
+      ];
+
+      // Limiting to 2 files
+      return newFiles.slice(0, 2);
+    });
+
     if (rejectedFiles?.length) {
       setRejected(previousFiles => [...previousFiles, ...rejectedFiles]);
     }
@@ -86,6 +99,8 @@ export default function FileUpload({ className }: Props) {
   //     }
   //   };
   const [isHovered, setIsHovered] = useState(false);
+  // Check if there are already 2 files uploaded
+  const hasTwoFiles = files.length === 2;
   return (
     <form className='  w-1/3'>
       <div
@@ -93,7 +108,7 @@ export default function FileUpload({ className }: Props) {
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
-        <input {...getInputProps()} />
+        {!hasTwoFiles && <input {...getInputProps()} />}
         <div className='flex flex-col items-center justify-center text-xs text-gray-400'>
           <UploadSvg className={`${isHovered ? 'text-blue-500' : ''}`} />
           <div className='text-gray-400'>
@@ -106,15 +121,20 @@ export default function FileUpload({ className }: Props) {
         </div>
         {/* <input type='file' onChange={handleFile1Change} />
         <input type='file' onChange={handleFile2Change} /> */}
-        <AnimatePresence mode={popLayout ? 'popLayout' : 'sync'}>
-          <ul className=''>
+        <ul className=''>
+          <AnimatePresence mode={'popLayout'}>
             {files.map((file, index) => (
               <motion.li
-                key={`${file.name} ${index}`}
+                layout
+                key={index}
                 className='mb-2 rounded-md border p-2'
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.8, opacity: 0 }}
+                transition={{ type: 'spring', stiffness: 600, damping: 30 }}
+                onClick={e => {
+                  e.stopPropagation(); // Stop event propagation here
+                  removeFile(file.name);
+                }}
               >
                 <div className='flex items-center gap-2 text-gray-500 dark:text-black'>
                   <LuFileJson
@@ -146,10 +166,18 @@ export default function FileUpload({ className }: Props) {
                 </div>
               </motion.li>
             ))}
-          </ul>
-        </AnimatePresence>
+          </AnimatePresence>
+        </ul>
 
-        <button type='submit'>Upload</button>
+        <motion.button
+          type='submit'
+          disabled={hasTwoFiles}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.9 }}
+          className=' instagram h-1/2 w-1/2 self-center rounded-full px-4 py-2 text-lg font-bold text-white  hover:cursor-pointer'
+        >
+          Upload
+        </motion.button>
       </div>
     </form>
   );
