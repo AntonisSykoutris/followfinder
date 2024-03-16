@@ -21,7 +21,8 @@ export default function UploadSvg({ className }: Props) {
         initial={{ pathLength: 0 }}
         animate={{ pathLength: 1 }}
         transition={{
-          duration: 6
+          stroke: { duration: 6 },
+          pathLength: { duration: 6 }
         }}
         strokeLinecap='round'
         strokeLinejoin='round'

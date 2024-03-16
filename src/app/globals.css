@@ -20,6 +20,7 @@ input:autofill {
 body {
   font-family: 'Main';
   overflow-x: hidden;
+  user-select: none;
 }
 
 .instagram {
