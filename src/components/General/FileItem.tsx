@@ -19,10 +19,6 @@ export default function FileItem({ file, key, removeFile }: Props) {
       animate={{ scale: 1, opacity: 1 }}
       exit={{ scale: 0.8, opacity: 0 }}
       transition={{ type: 'spring', stiffness: 600, damping: 30 }}
-      onClick={e => {
-        e.stopPropagation(); // Stop event propagation here
-        removeFile(file.name);
-      }}
     >
       <div className='flex items-center gap-2 text-gray-500 dark:text-black'>
         <LuFileJson
