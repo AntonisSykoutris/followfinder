@@ -23,7 +23,7 @@ export default function FileItem({ file, key, removeFile }: Props) {
       <div className='flex items-center gap-2 text-gray-500 dark:text-black'>
         <LuFileJson
           size='30'
-          className='shrink-0 text-secondary transition duration-500 hover:text-secondary-content'
+          className='shrink-0 text-[#f09433] transition duration-500 '
         />
         <div className='min-w-0 text-sm'>
           <div className='overflow-hidden overflow-ellipsis whitespace-nowrap'>
@@ -34,18 +34,14 @@ export default function FileItem({ file, key, removeFile }: Props) {
           </div>
         </div>
         <div className='grow' />
-        <div className='flex w-12 justify-end text-xs'>
-          <motion.div // Wrap your trash icon in a motion.div
-            whileHover={{ scale: 1.1 }} // Animation on hover
-            whileTap={{ scale: 0.9 }} // Animation when tapped
-            onClick={e => {
-              e.stopPropagation(); // Stop event propagation here
-              removeFile(file.name);
-            }}
-            className='h-6 w-6 shrink-0 cursor-pointer text-error transition duration-500 hover:text-error-content'
-          >
-            <LuTrash2 className='h-full w-full' />
-          </motion.div>
+        <div
+          onClick={e => {
+            e.stopPropagation();
+            removeFile(file.name);
+          }}
+          className='h-6 w-6  cursor-pointer text-error transition duration-500 hover:text-error-content'
+        >
+          <LuTrash2 className='h-full w-full' />
         </div>
       </div>
     </motion.li>

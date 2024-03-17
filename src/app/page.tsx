@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <MotionConfig
       transition={{
-        ...framerMotionConfig
+        ...framerMotionConfig,
       }}
     >
       <Hero />
