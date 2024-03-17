@@ -11,7 +11,7 @@ export default function ArrowSvg({ className }: Props) {
   return (
     <svg
       xmlns='http://www.w3.org/2000/svg'
-      className={`absolute ${className}`}
+      className={` ${className}`}
       viewBox='0 0 327 327'
       fill='none'
     >
