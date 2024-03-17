@@ -27,7 +27,10 @@ export default function Dropzone({ className }: Props) {
       }
 
       setFiles(previousFiles => {
-        const newFiles = [...previousFiles.slice(0, 2), ...acceptedFiles.map((file: File) => Object.assign(file))];
+        const newFiles = [
+          ...previousFiles.slice(0, 2),
+          ...acceptedFiles.map((file: File) => Object.assign(file))
+        ];
 
         // Limiting to 2 files
         return newFiles.slice(0, 2);
@@ -42,11 +45,11 @@ export default function Dropzone({ className }: Props) {
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     accept: {
-      'application/json': ['.json'],
+      'application/json': ['.json']
     },
     maxSize: 1024 * 1000,
     maxFiles: 2,
-    onDrop,
+    onDrop
   });
 
   const removeFile = (name: string) => {
@@ -70,12 +73,16 @@ export default function Dropzone({ className }: Props) {
         {...getRootProps({
           className: `${className} ${
             !hasTwoFiles ? 'cursor-pointer' : ''
-          } active:shadow-none"   relative flex  h-[30vh] w-[90vw]  flex-col  place-content-between justify-center gap-2 rounded-2xl  border-2 border-dashed border-black bg-white px-6 py-3 font-semibold uppercase text-black transition-all duration-300  hover:translate-x-[-4px] hover:translate-y-[-4px] hover:rounded-md hover:shadow-[4px_4px_0px_black] sm:h-[40dvh] sm:w-[80vw] md:w-[50vw] 2xl:h-[30dvh] 2xl:w-[40vw]  `,
+          } active:shadow-none"   relative flex  h-[30vh] w-[90vw]  flex-col  place-content-between justify-center gap-2 rounded-2xl  border-2 border-dashed border-black bg-white px-6 py-3 font-semibold uppercase text-black transition-all duration-300  hover:translate-x-[-4px] hover:translate-y-[-4px] hover:rounded-md hover:shadow-[4px_4px_0px_black] sm:h-[40dvh] sm:w-[80vw] md:w-[50vw] 2xl:h-[30dvh] 2xl:w-[40vw]  `
         })}
       >
         {!hasTwoFiles && <input {...getInputProps()} />}
-        <div className='absolute left-1/2 top-5 flex -translate-x-1/2 w-full  transform justify-center align-top text-gray-400'>
-          {isDragActive ? <p>Drop the files here ...</p> : <p>DRAG & DROP OR CLICK TO UPLOAD</p>}
+        <div className='absolute left-1/2 top-5 flex w-full -translate-x-1/2  transform justify-center align-top text-gray-400'>
+          {isDragActive ? (
+            <p>Drop the files here ...</p>
+          ) : (
+            <p>DRAG & DROP OR CLICK TO UPLOAD</p>
+          )}
         </div>
         <UploadSvg
           className={`absolute left-1/2 top-1/2 h-24 w-24 -translate-x-1/2 -translate-y-1/2 transform self-center text-blue-300 opacity-10  ${
