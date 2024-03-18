@@ -4,7 +4,7 @@ import { useState, FormEvent, useCallback } from 'react';
 import { FileRejection, useDropzone } from 'react-dropzone';
 import { motion } from 'framer-motion';
 
-import UploadSvg from '../General/UploadSvg';
+import UploadSvg from '../ui/UploadSvg';
 import FilesList from './FilesList';
 
 type Props = {
@@ -98,7 +98,7 @@ export default function Dropzone({ className }: Props) {
           whileHover={hasTwoFiles ? { scale: 1.05 } : 'none'}
           whileTap={hasTwoFiles ? { scale: 0.9 } : 'none'}
           className={` ${
-            hasTwoFiles ? 'instagram' : 'bg-[#e0e0e0]'
+            hasTwoFiles ? 'instagram' : 'bg-[#dbdbdb]'
           } absolute -bottom-5  self-center rounded-full px-8 py-2 text-lg font-bold text-white ${
             hasTwoFiles ? 'hover:cursor-pointer' : 'cursor-default'
           } `}

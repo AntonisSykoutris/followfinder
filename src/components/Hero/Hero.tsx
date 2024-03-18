@@ -2,7 +2,7 @@
 
 import Section from '../General/Section';
 import FileUpload from '../Dropzone/Dropzone';
-import ArrowSvg from '../General/ArrowSvg';
+import ArrowSvg from '../ui/ArrowSvg';
 import {
   useMotionTemplate,
   useMotionValue,
