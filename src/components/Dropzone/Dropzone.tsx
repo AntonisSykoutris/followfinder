@@ -14,9 +14,7 @@ type Props = {
 export default function Dropzone({ className }: Props) {
   const [files, setFiles] = useState<File[]>([]);
   const [rejected, setRejected] = useState<FileRejection[]>([]);
-  // const [isHovered, setIsHovered] = useState(false);
   const hasTwoFiles = files.length === 2;
-
   const onDrop = useCallback(
     (acceptedFiles: File[], rejectedFiles: FileRejection[]) => {
       const totalFiles = files.length + acceptedFiles.length;
@@ -76,8 +74,8 @@ export default function Dropzone({ className }: Props) {
           } active:shadow-none"   relative flex  h-[30vh] w-[90vw]  flex-col  place-content-between justify-center gap-2 rounded-2xl  border-2 border-dashed border-black bg-white px-6 py-3 font-semibold uppercase text-black transition-all duration-300  hover:translate-x-[-4px] hover:translate-y-[-4px] hover:rounded-md hover:shadow-[4px_4px_0px_black] sm:h-[40dvh] sm:w-[80vw] md:w-[50vw] 2xl:h-[30dvh] 2xl:w-[40vw]  `
         })}
       >
-        {!hasTwoFiles && <input {...getInputProps()} />}
-        <div className='absolute left-1/2 top-5 flex w-full -translate-x-1/2  transform justify-center align-top text-gray-400'>
+        {!hasTwoFiles ? <input {...getInputProps()} /> : <></>}
+        <div className='absolute left-1/2 top-2 flex w-full -translate-x-1/2 transform  justify-center align-top text-gray-400 md:top-5'>
           {isDragActive ? (
             <p>Drop the files here ...</p>
           ) : (
