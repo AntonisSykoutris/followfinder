@@ -1,6 +1,5 @@
 'use client';
 
-import Section from '../General/Section';
 import FileUpload from '../ui/Dropzone/Dropzone';
 import ArrowSvg from '../ui/ArrowSvg';
 import {

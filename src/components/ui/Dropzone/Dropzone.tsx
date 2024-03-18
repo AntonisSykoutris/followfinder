@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 
 import UploadSvg from '../UploadSvg';
 import FilesList from './FilesList';
+import axios from 'axios';
 
 type Props = {
   className?: string;
@@ -67,6 +68,31 @@ export default function Dropzone({ className }: Props) {
     e.preventDefault();
 
     if (!hasTwoFiles) return;
+    console.log('im in');
+    // Create FormData object
+    const formData = new FormData();
+    files.forEach(file => {
+      formData.append('files', file);
+    });
+
+    try {
+      // Send POST request
+      const response = await axios.post(
+        'https://jsonplaceholder.typicode.com/todos/1',
+        formData,
+        {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+        }
+      );
+
+      // Handle response
+      console.log('Response:', response.data);
+    } catch (error) {
+      // Handle errors
+      console.error('Error:', error);
+    }
   };
 
   return (
@@ -94,7 +120,7 @@ export default function Dropzone({ className }: Props) {
         <FilesList files={files} removeFile={removeFile} />
         <motion.button
           type='submit'
-          disabled={hasTwoFiles}
+          disabled={!hasTwoFiles}
           whileHover={hasTwoFiles ? { scale: 1.05 } : 'none'}
           whileTap={hasTwoFiles ? { scale: 0.9 } : 'none'}
           className={` ${
