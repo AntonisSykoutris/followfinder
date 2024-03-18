@@ -87,7 +87,7 @@ export default function Dropzone({ className }: Props) {
           )}
         </div>
         <UploadSvg
-          className={`absolute left-1/2 top-1/2 h-24 w-24 -translate-x-1/2 -translate-y-1/2 transform self-center text-blue-300 opacity-10  ${
+          className={`absolute left-1/2 top-1/2 h-24 w-24 -translate-x-1/2 -translate-y-1/2 transform self-center text-[#f7f6fd] opacity-60  ${
             files.length > 0 ? 'hidden' : ''
           }`}
         />
