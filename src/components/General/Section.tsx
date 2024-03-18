@@ -1,12 +1,12 @@
-'use client'
-import { cn } from '@/lib/utils'
-import { motion } from 'framer-motion'
-import { ReactNode } from 'react'
+'use client';
+import { cn } from '@/lib/utils';
+import { motion } from 'framer-motion';
+import { ReactNode } from 'react';
 
 type Props = {
-  children: ReactNode
-  className?: string
-}
+  children: ReactNode;
+  className?: string;
+};
 
 function Section({ children, className }: Props) {
   const SectionVariants = {
@@ -22,7 +22,7 @@ function Section({ children, className }: Props) {
         delay: 0.6
       }
     }
-  }
+  };
 
   return (
     <motion.section
@@ -39,7 +39,7 @@ function Section({ children, className }: Props) {
     >
       {children}
     </motion.section>
-  )
+  );
 }
 
-export default Section
+export default Section;
