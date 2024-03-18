@@ -45,17 +45,6 @@ export default function Hero({}: Props) {
         <ArrowSvg className='rig absolute -right-10 -top-5 h-14 w-14 translate-x-2/3  transform opacity-5 md:-right-20 md:h-20 md:w-20' />
       </div>
       <FileUpload />
-      <button
-        className='btn h-40  w-40 border text-black'
-        onClick={() => {
-          toast({
-            className: 'rounded-md',
-            description: 'Your message has been sent.'
-          });
-        }}
-      >
-        Test toast
-      </button>
     </motion.section>
   );
 }
