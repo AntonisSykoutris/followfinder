@@ -24,10 +24,14 @@ export default function Dropzone({ className }: Props) {
         setFiles(previousFiles => previousFiles.slice(2));
       }
 
+      const uniqueAcceptedFiles = acceptedFiles.filter(
+        file => !files.find(existingFile => existingFile.name === file.name)
+      );
+
       setFiles(previousFiles => {
         const newFiles = [
           ...previousFiles.slice(0, 2),
-          ...acceptedFiles.map((file: File) => Object.assign(file))
+          ...uniqueAcceptedFiles.map((file: File) => Object.assign(file))
         ];
 
         // Limiting to 2 files
@@ -38,7 +42,7 @@ export default function Dropzone({ className }: Props) {
         setRejected(previousFiles => [...previousFiles, ...rejectedFiles]);
       }
     },
-    [files.length]
+    [files]
   );
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
