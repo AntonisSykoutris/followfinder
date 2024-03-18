@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import SmoothScroll from '@/context/SmoothScroll';
+import { Toaster } from '@/components/ui/toaster';
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -21,6 +22,7 @@ export default function RootLayout({
       <body>
         <SmoothScroll>
           <main className='flex flex-col items-center'>{children}</main>
+          <Toaster />
         </SmoothScroll>
       </body>
     </html>

@@ -78,7 +78,7 @@ export default function Dropzone({ className }: Props) {
     try {
       // Send POST request
       const response = await axios.post(
-        'https://jsonplaceholder.typicode.com/todos/1',
+        'https://webhook.site/36fa61df-f0b6-4883-af78-662a20189daf/',
         formData,
         {
           headers: {

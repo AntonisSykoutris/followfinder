@@ -39,7 +39,7 @@ export default function FileItem({ file, key, removeFile }: Props) {
             e.stopPropagation();
             removeFile(file.name);
           }}
-          className='h-6 w-6  cursor-pointer text-error transition duration-500 hover:text-error-content'
+          className='h-6 w-6  cursor-pointer text-destructive transition duration-500 hover:scale-105'
         >
           <LuTrash2 className='h-full w-full' />
         </div>
