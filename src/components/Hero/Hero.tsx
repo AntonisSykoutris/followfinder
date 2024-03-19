@@ -1,6 +1,6 @@
 'use client';
 
-import FileUpload from '../ui/Dropzone/Dropzone';
+import Dropzone from '../ui/Dropzone/Dropzone';
 import ArrowSvg from '../ui/ArrowSvg';
 import {
   useMotionTemplate,
@@ -42,7 +42,7 @@ export default function Hero({}: Props) {
         </h1>
         <ArrowSvg className='rig absolute -right-10 -top-5 h-14 w-14 translate-x-2/3  transform opacity-5 md:-right-20 md:h-20 md:w-20' />
       </div>
-      <FileUpload />
+      <Dropzone />
     </motion.section>
   );
 }

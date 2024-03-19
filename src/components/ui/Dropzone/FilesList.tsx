@@ -8,8 +8,6 @@ type Props = {
 };
 
 export default function FilesList({ files, removeFile }: Props) {
-  console.log(files);
-
   return (
     <ul className=''>
       <AnimatePresence mode={'popLayout'}>

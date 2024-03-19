@@ -29,8 +29,6 @@ export default function Dropzone({ className }: Props) {
         file => !files.find(existingFile => existingFile.name === file.name)
       );
 
-      console.log(uniqueAcceptedFiles);
-
       // Remove duplicates from the files array
       const filesSet = new Set(files.map(file => file.name));
       const uniqueFiles = [
@@ -75,7 +73,6 @@ export default function Dropzone({ className }: Props) {
     e.preventDefault();
 
     if (!hasTwoFiles) return;
-    console.log('im in');
     // Create FormData object
     const formData = new FormData();
     files.forEach(file => {
