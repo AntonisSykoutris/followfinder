@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import SmoothScroll from '@/context/SmoothScroll';
-import { Toaster } from '@/components/ui/toaster';
+import { Toaster } from '@/context/toaster';
 
 export const metadata: Metadata = {
   title: 'Create Next App',

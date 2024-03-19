@@ -20,7 +20,7 @@ export default function FileItem({ file, key, removeFile }: Props) {
       exit={{ scale: 0.8, opacity: 0 }}
       transition={{ type: 'spring', stiffness: 600, damping: 30 }}
     >
-      <div className='flex items-center gap-2 text-gray-500 dark:text-black'>
+      <div className='flex items-center gap-2  dark:text-black'>
         <LuFileJson
           size='30'
           className='shrink-0 text-[#f09433] transition duration-500 '
@@ -29,9 +29,7 @@ export default function FileItem({ file, key, removeFile }: Props) {
           <div className='overflow-hidden overflow-ellipsis whitespace-nowrap'>
             {file.name}
           </div>
-          <div className='text-xs text-gray-400 dark:text-gray-400'>
-            {formatFileSize(file.size)}
-          </div>
+          <div className='text-xs  opacity-40'>{formatFileSize(file.size)}</div>
         </div>
         <div className='grow' />
         <div

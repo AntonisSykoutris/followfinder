@@ -101,11 +101,11 @@ export default function Dropzone({ className }: Props) {
         {...getRootProps({
           className: `${className} ${
             !hasTwoFiles ? 'cursor-pointer' : ''
-          } active:shadow-none"   relative flex  h-[30vh] w-[90vw]  flex-col  place-content-between justify-center gap-2 rounded-2xl  border-2 border-dashed border-black bg-white px-6 py-3 font-semibold uppercase text-black transition-all duration-300  hover:translate-x-[-4px] hover:translate-y-[-4px] hover:rounded-md hover:shadow-[4px_4px_0px_black] sm:h-[40dvh] sm:w-[80vw] md:w-[50vw] 2xl:h-[30dvh] 2xl:w-[40vw]  `
+          } active:shadow-none"   relative flex  h-[30vh] w-[90vw]  flex-col  bg-background place-content-between justify-center gap-2 rounded-2xl  border-2 border-dashed border-foreground bg-white px-6 py-3 font-semibold uppercase text-black transition-all duration-300  hover:translate-x-[-4px] hover:translate-y-[-4px] hover:rounded-md hover:shadow-[4px_4px_0px_black] sm:h-[40dvh] sm:w-[80vw] md:w-[50vw] 2xl:h-[30dvh] 2xl:w-[30vw]  `
         })}
       >
         {!hasTwoFiles ? <input {...getInputProps()} /> : <></>}
-        <div className='absolute left-1/2 top-2 flex w-full -translate-x-1/2 transform  justify-center align-top text-gray-400 md:top-5'>
+        <div className='absolute left-1/2 top-2 flex w-full -translate-x-1/2 transform  justify-center align-top md:top-5'>
           {isDragActive ? (
             <p>Drop the files here ...</p>
           ) : (
@@ -124,8 +124,8 @@ export default function Dropzone({ className }: Props) {
           whileHover={hasTwoFiles ? { scale: 1.05 } : 'none'}
           whileTap={hasTwoFiles ? { scale: 0.9 } : 'none'}
           className={` ${
-            hasTwoFiles ? 'instagram' : 'bg-[#dbdbdb]'
-          } absolute -bottom-5  self-center rounded-full px-8 py-2 text-lg font-bold text-white ${
+            hasTwoFiles ? 'instagram' : 'bg-secondary'
+          } absolute -bottom-5  self-center rounded-full px-8 py-2 text-lg font-bold text-primary-foreground ${
             hasTwoFiles ? 'hover:cursor-pointer' : 'cursor-default'
           } `}
         >

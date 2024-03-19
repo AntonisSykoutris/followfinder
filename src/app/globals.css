@@ -9,43 +9,53 @@
 
 @layer base {
   :root {
-    /* Name: custom color palette
-       Author: Ilias Ism
-       URL: https://gradient.page */
-
-    /* CSS: .bg-gradient { background: var(--gradient) } */
     --gradient: linear-gradient(to top left, #833ab4, #fd1d1d, #fcb045);
-
-    --background: #040917;
-    --foreground: #f9f9f9;
-
-    --muted: #2b2e3e;
-    --muted-foreground: #8ca0b3;
-
-    --popover: #35485c;
-    --popover-foreground: #f9f9f9;
-
-    --card: #35485c;
-    --card-foreground: #f9f9f9;
-
-    --border: #2b2e3e;
-    --input: #2b2e3e;
-
-    --primary: #3a8ed2;
-    --primary-foreground: #0c0d12;
-
-    --secondary: #2b2e3e;
-    --secondary-foreground: #f9f9f9;
-
-    --accent: #2b2e3e;
-    --accent-foreground: #f9f9f9;
-
-    --destructive: #c3004c;
-    --destructive-foreground: #f9f9f9;
-
-    --ring: #3a8ed2;
+    --background: 276 40% 100%;
+    --foreground: 276 5% 10%;
+    --card: 276 40% 100%;
+    --card-foreground: 276 5% 15%;
+    --popover: 276 40% 100%;
+    --popover-foreground: 276 95% 10%;
+    --primary: 276 51.3% 46.7%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 276 30% 90%;
+    --secondary-foreground: 0 0% 0%;
+    --muted: 238 30% 95%;
+    --muted-foreground: 276 5% 40%;
+    --accent: 238 30% 90%;
+    --accent-foreground: 276 5% 15%;
+    --destructive: 0 50% 50%;
+    --destructive-foreground: 276 5% 100%;
+    --border: 276 30% 82%;
+    --input: 276 30% 50%;
+    --ring: 276 51.3% 46.7%;
+    --radius: 0.5rem;
+  }
+  .dark {
+    --gradient: linear-gradient(to top left, #833ab4, #fd1d1d, #fcb045);
+    --background: 276 40% 10%;
+    --foreground: 276 5% 100%;
+    --card: 276 40% 10%;
+    --card-foreground: 276 5% 100%;
+    --popover: 276 40% 5%;
+    --popover-foreground: 276 5% 100%;
+    --primary: 276 51.3% 46.7%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 276 30% 20%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 238 30% 25%;
+    --muted-foreground: 276 5% 65%;
+    --accent: 238 30% 25%;
+    --accent-foreground: 276 5% 95%;
+    --destructive: 0 50% 50%;
+    --destructive-foreground: 276 5% 100%;
+    --border: 276 30% 50%;
+    --input: 276 30% 50%;
+    --ring: 276 51.3% 46.7%;
+    --radius: 0.5rem;
   }
 }
+
 @layer base {
   * {
     @apply border-border;
