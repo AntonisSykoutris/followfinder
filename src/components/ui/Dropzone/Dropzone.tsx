@@ -29,14 +29,20 @@ export default function Dropzone({ className }: Props) {
         file => !files.find(existingFile => existingFile.name === file.name)
       );
 
+      console.log(uniqueAcceptedFiles);
+
+      // Remove duplicates from the files array
+      const filesSet = new Set(files.map(file => file.name));
+      const uniqueFiles = [
+        ...files,
+        ...uniqueAcceptedFiles.filter(file => !filesSet.has(file.name))
+      ];
+
       setFiles(previousFiles => {
-        const newFiles = [
-          ...previousFiles.slice(0, 2),
-          ...uniqueAcceptedFiles.map((file: File) => Object.assign(file))
-        ];
+        const newFiles = [...uniqueFiles.slice(0, 2)];
 
         // Limiting to 2 files
-        return newFiles.slice(0, 2);
+        return newFiles;
       });
 
       if (rejectedFiles?.length) {
@@ -52,6 +58,7 @@ export default function Dropzone({ className }: Props) {
     },
     maxSize: 1024 * 1000,
     maxFiles: 2,
+    noClick: hasTwoFiles,
     onDrop
   });
 
