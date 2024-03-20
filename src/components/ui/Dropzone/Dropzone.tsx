@@ -83,7 +83,7 @@ export default function Dropzone({ className }: Props) {
     });
 
     try {
-      const res = await fetch('https://httpbin.org/postt', {
+      const res = await fetch('https://httpbin.org/post', {
         headers: {
           'Content-Type': 'multipart/form-data'
         },
