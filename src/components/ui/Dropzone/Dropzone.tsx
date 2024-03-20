@@ -83,7 +83,7 @@ export default function Dropzone({ className }: Props) {
     });
 
     try {
-      const res = await fetch('https://httpbin.org/post', {
+      const res = await fetch('https://httpbin.org/postt', {
         headers: {
           'Content-Type': 'multipart/form-data'
         },
@@ -92,7 +92,7 @@ export default function Dropzone({ className }: Props) {
       });
 
       if (res.ok) {
-        toast.success('analyzes successfully');
+        // toast.success('analyzes successfully');
 
         // Save response data to local storage
         const result = await res.json();
@@ -105,11 +105,13 @@ export default function Dropzone({ className }: Props) {
           toast.error('Failed to save data to local storage');
         }
       } else {
-        toast.error('failed to send the POST request');
+        console.log(res);
+        toast.error(
+          'Error while processing the request. Please try again later'
+        );
       }
     } catch (error) {
-      console.log('Error with sending the POST request');
-      toast.error('failed to send the POST request');
+      toast.error(`${error}`);
     }
   };
 
