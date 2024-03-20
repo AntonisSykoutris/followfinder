@@ -7,6 +7,8 @@ import { motion } from 'framer-motion';
 import UploadSvg from '../UploadSvg';
 import FilesList from './FilesList';
 import axios from 'axios';
+import { ToastDestructive } from '../ToastDestructive';
+import { toast } from 'sonner';
 
 type Props = {
   className?: string;
@@ -16,6 +18,7 @@ export default function Dropzone({ className }: Props) {
   const [files, setFiles] = useState<File[]>([]);
   const [rejected, setRejected] = useState<FileRejection[]>([]);
   const hasTwoFiles = files.length === 2;
+
   const onDrop = useCallback(
     (acceptedFiles: File[], rejectedFiles: FileRejection[]) => {
       const totalFiles = files.length + acceptedFiles.length;
@@ -80,22 +83,23 @@ export default function Dropzone({ className }: Props) {
     });
 
     try {
-      // Send POST request
-      const response = await axios.post(
-        'https://webhook.site/36fa61df-f0b6-4883-af78-662a20189daf/',
-        formData,
-        {
-          headers: {
-            'Content-Type': 'multipart/form-data'
-          }
-        }
-      );
+      const res = await fetch('https://httpbin.org/post', {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        },
+        body: formData,
+        method: 'POST'
+      });
 
-      // Handle response
-      console.log('Response:', response.data);
+      if (res.ok) {
+        toast.success('analyzes successfully');
+      }
+
+      const result = await res.json();
+      console.log(result);
     } catch (error) {
-      // Handle errors
-      console.error('Error:', error);
+      console.log('Error with sending the POST request');
+      toast.error('failed to send the POST request');
     }
   };
 

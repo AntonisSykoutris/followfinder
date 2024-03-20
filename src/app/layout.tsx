@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import SmoothScroll from '@/context/SmoothScroll';
-import { Toaster } from '@/context/toaster';
+import { Toaster } from 'sonner';
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -22,7 +22,7 @@ export default function RootLayout({
       <body>
         <SmoothScroll>
           <main className='flex flex-col items-center'>{children}</main>
-          <Toaster />
+          <Toaster richColors duration={2000} />
         </SmoothScroll>
       </body>
     </html>
