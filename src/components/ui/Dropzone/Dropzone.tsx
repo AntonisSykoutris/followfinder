@@ -6,15 +6,15 @@ import { motion } from 'framer-motion';
 
 import UploadSvg from '../UploadSvg';
 import FilesList from './FilesList';
-import axios from 'axios';
-import { ToastDestructive } from '../ToastDestructive';
 import { toast } from 'sonner';
+import { useRouter } from 'next/navigation';
 
 type Props = {
   className?: string;
 };
 
 export default function Dropzone({ className }: Props) {
+  const router = useRouter();
   const [files, setFiles] = useState<File[]>([]);
   const [rejected, setRejected] = useState<FileRejection[]>([]);
   const hasTwoFiles = files.length === 2;
@@ -93,10 +93,20 @@ export default function Dropzone({ className }: Props) {
 
       if (res.ok) {
         toast.success('analyzes successfully');
-      }
 
-      const result = await res.json();
-      console.log(result);
+        // Save response data to local storage
+        const result = await res.json();
+        localStorage.setItem('responseStrings', JSON.stringify('testing'));
+
+        // Check if data is saved in local storage before navigating
+        if (localStorage.getItem('responseStrings')) {
+          router.push('/results');
+        } else {
+          toast.error('Failed to save data to local storage');
+        }
+      } else {
+        toast.error('failed to send the POST request');
+      }
     } catch (error) {
       console.log('Error with sending the POST request');
       toast.error('failed to send the POST request');
