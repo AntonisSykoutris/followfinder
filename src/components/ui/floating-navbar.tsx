@@ -52,7 +52,7 @@ export const FloatingNav = ({
         )}
       >
         <UploadSvg />
-        <div className='flex gap-x-10 '>
+        <div className='flex gap-x-4 sm:gap-x-10 '>
           {navItems.map((navItem: any, idx: number) => (
             <Link
               key={`link=${idx}`}
@@ -61,15 +61,17 @@ export const FloatingNav = ({
                 'relative flex items-center space-x-1  text-neutral-600 hover:text-neutral-500 dark:text-neutral-50 dark:hover:text-neutral-300'
               )}
             >
-              <span className='relative text-sm after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-[#bc1888] after:transition-transform after:duration-300 after:ease-in-out hover:after:origin-bottom-left hover:after:scale-x-100 sm:text-xl'>
+              <span className='relative text-sm after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-[#bc1888] after:transition-transform after:duration-300 after:ease-in-out hover:after:origin-bottom-left hover:after:scale-x-100 sm:text-base'>
                 {navItem.name}
               </span>
             </Link>
           ))}
-          <button className='relative rounded-full border border-neutral-200 px-4 py-2 text-sm font-medium text-black dark:border-white/[0.2] dark:text-white sm:text-xl'>
-            <span>Login</span>
-            <span className='instagram absolute inset-x-0 -bottom-px mx-auto h-px w-1/2 bg-gradient-to-r from-transparent  to-transparent' />
-          </button>
+          <div className='group relative'>
+            <div className='animate-tilt instagram absolute -inset-0.5 rounded-lg opacity-75 blur transition duration-1000  group-hover:opacity-100 group-hover:duration-200'></div>
+            <div className='relative rounded-md bg-gray-200 px-4 py-2 text-sm  hover:cursor-pointer sm:text-base'>
+              Sign In
+            </div>
+          </div>
         </div>
       </motion.div>
     </AnimatePresence>
