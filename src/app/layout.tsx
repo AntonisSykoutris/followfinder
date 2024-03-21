@@ -3,6 +3,7 @@ import './globals.css';
 import SmoothScroll from '@/context/SmoothScroll';
 import { Toaster } from 'sonner';
 import { Navbar } from '@/components/Navbar/Navbar';
+import Footer from '@/components/Footer/Footer';
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -24,6 +25,7 @@ export default function RootLayout({
         <SmoothScroll>
           <Navbar />
           <main className='flex flex-col items-center'>{children}</main>
+          <Footer />
           <Toaster richColors duration={2000} />
         </SmoothScroll>
       </body>

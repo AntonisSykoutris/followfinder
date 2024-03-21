@@ -67,8 +67,8 @@ export const FloatingNav = ({
             </Link>
           ))}
           <div className='group relative'>
-            <div className='animate-tilt instagram absolute -inset-0.5 rounded-lg opacity-75 blur transition duration-1000  group-hover:opacity-100 group-hover:duration-200'></div>
-            <div className='relative rounded-md bg-gray-200 px-4 py-2 text-sm  hover:cursor-pointer sm:text-base'>
+            <div className='animate-tilt instagram absolute -inset-0.5 rounded-full  opacity-75 blur transition duration-1000  group-hover:opacity-100 group-hover:duration-200'></div>
+            <div className='relative rounded-full bg-gray-200 px-4 py-2 text-sm  hover:cursor-pointer sm:text-base'>
               Sign In
             </div>
           </div>
