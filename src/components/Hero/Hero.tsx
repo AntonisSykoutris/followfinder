@@ -1,6 +1,6 @@
 'use client';
 
-import Dropzone from '../ui/Dropzone/Dropzone';
+import Dropzone from '../Dropzone/Dropzone';
 import ArrowSvg from '../ui/ArrowSvg';
 import {
   useMotionTemplate,

@@ -10,6 +10,7 @@ import Link from 'next/link';
 import { cn } from '@/lib/utils';
 import UploadSvg from './UploadSvg';
 import Hamburger from '../Navbar/Hamburger';
+import NavLink from './navlink';
 
 export const FloatingNav = ({
   navItems,
@@ -54,17 +55,7 @@ export const FloatingNav = ({
         <UploadSvg />
         <div className='flex gap-x-4 sm:gap-x-10 '>
           {navItems.map((navItem: any, idx: number) => (
-            <Link
-              key={`link=${idx}`}
-              href={navItem.link}
-              className={cn(
-                'relative flex items-center space-x-1  text-neutral-600 hover:text-neutral-500 dark:text-neutral-50 dark:hover:text-neutral-300'
-              )}
-            >
-              <span className='relative text-sm after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-[#bc1888] after:transition-transform after:duration-300 after:ease-in-out hover:after:origin-bottom-left hover:after:scale-x-100 sm:text-base'>
-                {navItem.name}
-              </span>
-            </Link>
+            <NavLink key={idx} href={navItem.link} name={navItem.name} />
           ))}
           <div className='group relative'>
             <div className='animate-tilt instagram absolute -inset-0.5 rounded-full  opacity-75 blur transition duration-1000  group-hover:opacity-100 group-hover:duration-200'></div>

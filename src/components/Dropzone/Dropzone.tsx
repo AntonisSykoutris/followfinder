@@ -4,7 +4,7 @@ import { useState, FormEvent, useCallback } from 'react';
 import { FileRejection, useDropzone } from 'react-dropzone';
 import { motion } from 'framer-motion';
 
-import UploadSvg from '../UploadSvg';
+import UploadSvg from '../ui/UploadSvg';
 import FilesList from './FilesList';
 import { toast } from 'sonner';
 import { useRouter } from 'next/navigation';
