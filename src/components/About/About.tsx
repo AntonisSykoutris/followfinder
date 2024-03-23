@@ -34,7 +34,7 @@ const features = [
 
 export default function About({}: Props) {
   return (
-    <Section className='h-[130vh] sm:h-screen'>
+    <Section className='h-[160vh] sm:h-screen'>
       <div className='mx-auto max-w-2xl lg:text-center'>
         <h2 className='text-base font-semibold leading-7 text-indigo-600'>
           Deploy faster
