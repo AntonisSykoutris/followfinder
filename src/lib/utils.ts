@@ -27,3 +27,10 @@ export function formatFileSize(bytes?: number) {
   const i = Math.floor(Math.log(bytes) / Math.log(k));
   return `${parseFloat((bytes / Math.pow(k, i)).toFixed(dm))} ${sizes[i]}`;
 }
+
+export const scrolltoHash = function (element_id: string) {
+  const element = document.getElementById(element_id);
+  element?.scrollIntoView({
+    behavior: 'smooth'
+  });
+};

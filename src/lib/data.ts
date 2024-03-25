@@ -3,6 +3,21 @@ import { LuCastle } from 'react-icons/lu';
 
 export const MOTION_SLIDE_DEFAULT_DELAY = 0.5;
 
+export const navItems = [
+  {
+    name: 'Home',
+    link: '/'
+  },
+  {
+    name: 'Documentation',
+    link: '/documentation'
+  },
+  {
+    name: 'Contact',
+    link: 'contact_section'
+  }
+];
+
 export const Features = [
   {
     name: 'Push to deploy',

@@ -1,6 +1,7 @@
 'use client';
 
 import Section from '@/components/General/Section';
+import ShapesSvg from '@/components/ShapesSvg';
 import {
   Accordion,
   AccordionContent,
@@ -10,8 +11,9 @@ import {
 
 export default function FAQPage() {
   return (
-    <Section className='relative items-center justify-center'>
-      <h1 className=' absolute inset-0  -z-10 mb-32   mt-56 justify-self-center  text-xl font-bold sm:text-2xl md:text-3xl lg:text-5xl'>
+    <Section className='relative items-center justify-center overflow-x-hidden'>
+      <ShapesSvg className='absolute bottom-0  right-3 -z-20 h-screen  overflow-hidden' />
+      <h1 className=' absolute inset-0  -z-10  mt-44 justify-self-center  text-xl font-bold sm:text-2xl md:text-3xl lg:text-5xl'>
         <span className='text-instagram'>F</span>requently{' '}
         <span className='text-instagram'>A</span>sked{' '}
         <span className=' text-instagram'>Q</span>uestions
@@ -35,6 +37,20 @@ export default function FAQPage() {
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value='item-3'>
+          <AccordionTrigger>Is it animated?</AccordionTrigger>
+          <AccordionContent>
+            Yes. It&apos;s animated by default, but you can disable it if you
+            prefer.
+          </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value='item-4'>
+          <AccordionTrigger>Is it animated?</AccordionTrigger>
+          <AccordionContent>
+            Yes. It&apos;s animated by default, but you can disable it if you
+            prefer.
+          </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value='item-5'>
           <AccordionTrigger>Is it animated?</AccordionTrigger>
           <AccordionContent>
             Yes. It&apos;s animated by default, but you can disable it if you
