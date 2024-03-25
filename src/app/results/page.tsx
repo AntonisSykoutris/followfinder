@@ -6,12 +6,10 @@ import React from 'react';
 
 type Props = {};
 
-function page({}: Props) {
+export default function ResultsPage({}: Props) {
   return (
     <Section>
       <Link href='/'>return home</Link>;
     </Section>
   );
 }
-
-export default page;

@@ -40,8 +40,8 @@ export const FooterCompanyLinks: FooterNavLink[] = [
     link: '#'
   },
   {
-    name: 'Pricing',
-    link: '#'
+    name: 'FAQ',
+    link: '/faq'
   }
 ];
 
