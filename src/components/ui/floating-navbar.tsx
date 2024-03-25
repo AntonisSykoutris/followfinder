@@ -6,11 +6,10 @@ import {
   useScroll,
   useMotionValueEvent
 } from 'framer-motion';
-import Link from 'next/link';
 import { cn } from '@/lib/utils';
 import UploadSvg from './UploadSvg';
-import Hamburger from '../Navbar/Hamburger';
 import NavLink from './navlink';
+import { Dropdown } from '../Navbar/Dropdown';
 
 export const FloatingNav = ({
   navItems,
@@ -57,12 +56,7 @@ export const FloatingNav = ({
           {navItems.map((navItem: any, idx: number) => (
             <NavLink key={idx} href={navItem.link} name={navItem.name} />
           ))}
-          <div className='group relative'>
-            <div className='animate-tilt instagram absolute -inset-0.5 rounded-full  opacity-75 blur transition duration-1000  group-hover:opacity-100 group-hover:duration-200'></div>
-            <div className='relative rounded-full bg-gray-200 px-4 py-2 text-sm  hover:cursor-pointer sm:text-base'>
-              Sign In
-            </div>
-          </div>
+          <Dropdown />
         </div>
       </motion.div>
     </AnimatePresence>

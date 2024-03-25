@@ -11,10 +11,6 @@ export const navItems = [
   {
     name: 'Documentation',
     link: '/documentation'
-  },
-  {
-    name: 'Contact',
-    link: 'contact_section'
   }
 ];
 
