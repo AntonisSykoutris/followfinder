@@ -5,6 +5,7 @@ import { Features } from '@/lib/data';
 import { slideInFromBottom, slideInFromTop } from '@/lib/motion';
 import { motion } from 'framer-motion';
 import LeavesSvg from '../LeavesSvg';
+import Link from 'next/link';
 
 type Props = {};
 
