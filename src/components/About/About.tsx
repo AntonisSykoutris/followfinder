@@ -11,7 +11,7 @@ type Props = {};
 
 export default function About({}: Props) {
   return (
-    <Section className='relative overflow-x-hidden'>
+    <Section className='relative h-[160vh] overflow-x-hidden sm:h-screen'>
       <LeavesSvg className='absolute -z-20 h-screen' />
       <motion.div
         className='mx-auto max-w-2xl lg:text-center'
