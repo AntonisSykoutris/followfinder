@@ -10,7 +10,7 @@ export default function LeavesSvg({ className }: Props) {
     <svg
       xmlns='http://www.w3.org/2000/svg'
       viewBox='0 0 800 800'
-      className={cn(' self-stretch opacity-30', className)}
+      className={cn(' self-stretch overflow-hidden opacity-30', className)}
     >
       <g fill='#b518a8'>
         <path
