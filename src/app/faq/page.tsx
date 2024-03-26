@@ -15,7 +15,7 @@ export default function FAQPage() {
       className='relative items-center justify-center overflow-x-hidden'
       animate
     >
-      <motion.h1 className=' absolute inset-0  z-30 mt-32 justify-self-center  text-xl font-bold sm:text-2xl md:mt-44 md:text-3xl lg:text-5xl'>
+      <motion.h1 className=' absolute inset-0  z-30 mt-32 justify-self-center  text-xl font-bold sm:text-2xl md:text-3xl lg:mt-44 lg:text-5xl'>
         <span className='text-instagram'>F</span>requently{' '}
         <span className='text-instagram'>A</span>sked{' '}
         <span className=' text-instagram'>Q</span>uestions
