@@ -61,14 +61,14 @@ export const FooterCompanyLinks: FooterNavLink[] = [
 export const FooterImportantLinks: FooterNavLink[] = [
   {
     name: 'Terms of Services',
-    link: '#'
+    link: '/terms-of-service'
   },
   {
     name: 'Privacy Policy',
-    link: '#'
+    link: '/privacy-policy'
   },
   {
     name: 'Documentation',
-    link: '#'
+    link: '/documentation'
   }
 ];
