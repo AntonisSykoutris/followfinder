@@ -6,12 +6,19 @@ import React from 'react';
 
 type Props = {
   className?: string;
+  underline?: string;
   key?: number;
   href: string;
   name: string;
 };
 
-export default function NavLink({ className, key, href, name }: Props) {
+export default function NavLink({
+  className,
+  underline,
+  key,
+  href,
+  name
+}: Props) {
   return (
     <Link
       key={`link=${key}`}
@@ -21,7 +28,12 @@ export default function NavLink({ className, key, href, name }: Props) {
         className
       )}
     >
-      <span className='relative text-sm after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-[#bc1888] after:transition-transform after:duration-300 after:ease-in-out hover:after:origin-bottom-left hover:after:scale-x-100 sm:text-base'>
+      <span
+        className={cn(
+          'relative text-sm after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-foreground after:transition-transform after:duration-300 after:ease-in-out hover:after:origin-bottom-left hover:after:scale-x-100 sm:text-base',
+          underline
+        )}
+      >
         {name}
       </span>
     </Link>

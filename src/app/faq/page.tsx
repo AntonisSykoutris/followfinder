@@ -1,27 +1,29 @@
 'use client';
 
 import Section from '@/components/General/Section';
-import ShapesSvg from '@/components/ShapesSvg';
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger
 } from '@/components/ui/accordion';
+import { motion } from 'framer-motion';
 
 export default function FAQPage() {
   return (
-    <Section className='relative items-center justify-center overflow-x-hidden'>
-      <ShapesSvg className='absolute bottom-0  right-3 -z-20 h-screen  overflow-hidden' />
-      <h1 className=' absolute inset-0  -z-10 mt-36 justify-self-center  text-xl font-bold sm:text-2xl md:mt-44 md:text-3xl lg:text-5xl'>
+    <Section
+      className='relative items-center justify-center overflow-x-hidden'
+      animate
+    >
+      <motion.h1 className=' absolute inset-0  z-30 mt-32 justify-self-center  text-xl font-bold sm:text-2xl md:mt-44 md:text-3xl lg:text-5xl'>
         <span className='text-instagram'>F</span>requently{' '}
         <span className='text-instagram'>A</span>sked{' '}
         <span className=' text-instagram'>Q</span>uestions
-      </h1>
+      </motion.h1>
       <Accordion
         type='single'
         collapsible
-        className='w-full self-center rounded-xl bg-[#f7f6fd] p-10 md:w-1/2'
+        className='w-full self-center rounded-xl bg-background p-10 md:w-1/2'
       >
         <AccordionItem value='item-1' className=''>
           <AccordionTrigger>Is it accessible?</AccordionTrigger>

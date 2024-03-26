@@ -3,6 +3,8 @@ import { LuCastle } from 'react-icons/lu';
 
 export const MOTION_SLIDE_DEFAULT_DELAY = 0.5;
 
+export const COLORS_TOP = ['#bc1888', '#CE84CF', '#e6683c'];
+
 export const navItems = [
   {
     name: 'Home',

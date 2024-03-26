@@ -1,4 +1,5 @@
 'use client';
+import { useColorAnimation } from '@/hooks/useColorAnimation';
 import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
 import { ReactNode } from 'react';
@@ -6,9 +7,12 @@ import { ReactNode } from 'react';
 type Props = {
   children: ReactNode;
   className?: string;
+  animate?: boolean;
 };
 
-function Section({ children, className }: Props) {
+function Section({ children, className, animate = false }: Props) {
+  const { backgroundImage } = useColorAnimation();
+
   const SectionVariants = {
     initial: {
       opacity: 0,
@@ -36,6 +40,13 @@ function Section({ children, className }: Props) {
       variants={SectionVariants}
       initial={'initial'}
       whileInView={'animate'}
+      style={
+        animate
+          ? {
+              backgroundImage
+            }
+          : {}
+      }
     >
       {children}
     </motion.section>

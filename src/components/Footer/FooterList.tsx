@@ -19,6 +19,7 @@ export default function FooterList({ title, items }: Props) {
             <li key={index} className='mt-3'>
               <NavLink
                 className='inline-block text-primary hover:text-primary/90'
+                underline='after:bg-background'
                 href={item.link}
                 name={item.name}
               />

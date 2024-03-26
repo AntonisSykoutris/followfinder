@@ -145,7 +145,7 @@ export default function Dropzone({ className }: Props) {
           whileTap={hasTwoFiles ? { scale: 0.9 } : 'none'}
           className={` ${
             hasTwoFiles ? 'instagram' : 'bg-secondary'
-          } absolute -bottom-5  self-center rounded-full px-8 py-2 text-lg font-bold text-primary-foreground ${
+          } absolute -bottom-5  self-center rounded-md px-8 py-2 text-lg font-bold text-primary-foreground ${
             hasTwoFiles ? 'hover:cursor-pointer' : 'cursor-default'
           } `}
         >
