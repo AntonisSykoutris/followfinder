@@ -12,18 +12,19 @@ import { motion } from 'framer-motion';
 export default function FAQPage() {
   return (
     <Section
-      className='relative items-center justify-center overflow-x-hidden'
+      className='relative mx-auto flex h-screen w-screen
+      flex-col items-center justify-center gap-y-10 overflow-x-hidden p-8'
       animate
     >
-      <motion.h1 className=' absolute inset-0  z-30 mt-32 justify-self-center  text-xl font-bold sm:text-2xl md:text-3xl lg:mt-44 lg:text-5xl'>
+      <h1 className='text-xl font-bold  sm:text-2xl md:text-3xl lg:text-5xl'>
         <span className='text-instagram'>F</span>requently{' '}
         <span className='text-instagram'>A</span>sked{' '}
         <span className=' text-instagram'>Q</span>uestions
-      </motion.h1>
+      </h1>
       <Accordion
         type='single'
         collapsible
-        className='w-full self-center rounded-xl bg-background p-10 md:w-1/2'
+        className='relative z-50 w-full rounded-xl bg-background p-10 md:w-1/2'
       >
         <AccordionItem value='item-1' className=''>
           <AccordionTrigger>Is it accessible?</AccordionTrigger>
