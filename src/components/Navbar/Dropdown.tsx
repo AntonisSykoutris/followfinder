@@ -58,7 +58,7 @@ export function Dropdown() {
         <NavigationMenuItem>
           <NavigationMenuTrigger>Help</NavigationMenuTrigger>
           <NavigationMenuContent>
-            <ul className='grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] '>
+            <ul className='grid w-[90dvw] gap-3 p-4 md:w-[60dvw] md:grid-cols-2 lg:w-[40dvw] xl:w-[35dvw] 2xl:w-[25dvw] '>
               {components.map(component => (
                 <ListItem
                   key={component.title}
