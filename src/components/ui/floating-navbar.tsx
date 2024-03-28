@@ -9,7 +9,8 @@ import {
 import { cn } from '@/lib/utils';
 import UploadSvg from './UploadSvg';
 import NavLink from './navlink';
-import { Dropdown } from '../Navbar/Dropdown';
+import { Dropdown } from './dropdown';
+import { dropdownItems } from '@/lib/data';
 
 export const FloatingNav = ({
   navItems,
@@ -56,7 +57,7 @@ export const FloatingNav = ({
           {navItems.map((navItem: any, idx: number) => (
             <NavLink key={idx} href={navItem.link} name={navItem.name} />
           ))}
-          <Dropdown />
+          <Dropdown dropdownList={dropdownItems} />
         </div>
       </motion.div>
     </AnimatePresence>

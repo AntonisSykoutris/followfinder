@@ -1,4 +1,4 @@
-import { FooterNavLink } from './types';
+import { DropdownItem, FooterNavLink } from './types';
 import { LuCastle } from 'react-icons/lu';
 
 export const MOTION_SLIDE_DEFAULT_DELAY = 0.5;
@@ -13,6 +13,43 @@ export const navItems = [
   {
     name: 'Documentation',
     link: '/documentation'
+  }
+];
+
+export const dropdownItems: DropdownItem[] = [
+  {
+    title: 'About Us',
+    href: '/about',
+    description:
+      'A modal dialog that interrupts the user with important content and expects a response.'
+  },
+  {
+    title: 'Terms of Services',
+    href: '/terms-of-services',
+    description: 'For sighted users to preview content available behind a link.'
+  },
+  {
+    title: 'Services',
+    href: '/services',
+    description:
+      'Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.'
+  },
+  {
+    title: 'Privacy Policy',
+    href: '/privacy-policy',
+    description: 'Visually or semantically separates content.'
+  },
+  {
+    title: 'FAQ',
+    href: '/faq',
+    description:
+      'A set of layered sections of content—known as tab panels—that are displayed one at a time.'
+  },
+  {
+    title: 'Tooltip',
+    href: '/docs/primitives/tooltip',
+    description:
+      'A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.'
   }
 ];
 
