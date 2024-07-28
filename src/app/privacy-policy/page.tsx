@@ -15,9 +15,9 @@ export default function PrivacyPolicyPage() {
       </h1>
 
       <p className='mt-5'>
-        Insta Flow operates the website &quot;Insta-flow&quot; at{' '}
-        <a href='https://insta-flow.vercel.app/'>
-          https://insta-flow.vercel.app/
+        FollowFinder operates the website &quot;followfinder&quot; at{' '}
+        <a href='https://followfinder.vercel.app/'>
+          https://followfinder.vercel.app/
         </a>
         . I take your privacy seriously. To better protect your privacy, I
         provide this privacy policy notice explaining the way your personal
