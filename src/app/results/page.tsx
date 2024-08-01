@@ -1,18 +1,16 @@
 'use client';
 
 import Section from '@/components/General/Section';
+import TableDemo from '@/components/General/TableDemo';
+import { Users } from '@/lib/types';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 
 type Props = {};
 
 export default function ResultsPage({}: Props) {
-  const [followingData, setFollowingData] = useState<
-    { value: string; timestamp: number }[]
-  >([]);
-  const [followersData, setFollowersData] = useState<
-    { value: string; timestamp: number }[]
-  >([]);
+  const [followingData, setFollowingData] = useState<Users[]>([]);
+  const [followersData, setFollowersData] = useState<Users[]>([]);
 
   useEffect(() => {
     // Retrieve and parse the data from localStorage
@@ -36,7 +34,7 @@ export default function ResultsPage({}: Props) {
       <Link href='/'>return home</Link>;
       <section>
         <h2>Following</h2>
-        <ul>
+        {/* <ul>
           {followingData.map((item, index) => (
             <li key={index}>
               <a
@@ -49,11 +47,11 @@ export default function ResultsPage({}: Props) {
               - {new Date(item.timestamp * 1000).toLocaleDateString()}
             </li>
           ))}
-        </ul>
+        </ul> */}
       </section>
       <section>
         <h2>Followers</h2>
-        <ul>
+        {/* <ul>
           {followersData.map((item, index) => (
             <li key={index}>
               <a
@@ -66,8 +64,9 @@ export default function ResultsPage({}: Props) {
               - {new Date(item.timestamp * 1000).toLocaleDateString()}
             </li>
           ))}
-        </ul>
+        </ul> */}
       </section>
+      <TableDemo users={followersData} />
     </Section>
   );
 }

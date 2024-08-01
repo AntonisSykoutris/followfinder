@@ -4,6 +4,7 @@ import SmoothScroll from '@/context/SmoothScroll';
 import { Toaster } from 'sonner';
 import { Navbar } from '@/components/Navbar/Navbar';
 import Footer from '@/components/Footer/Footer';
+import { NextUIProvider } from '@nextui-org/react';
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -23,10 +24,12 @@ export default function RootLayout({
       />
       <body>
         <SmoothScroll>
-          <Navbar />
-          <main className='flex flex-col items-center'>{children}</main>
-          <Footer />
-          <Toaster richColors duration={2000} />
+          <NextUIProvider>
+            <Navbar />
+            <main className='flex flex-col items-center'>{children}</main>
+            <Footer />
+            <Toaster richColors duration={2000} />
+          </NextUIProvider>
         </SmoothScroll>
       </body>
     </html>

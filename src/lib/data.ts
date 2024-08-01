@@ -1,3 +1,4 @@
+import { timeStamp } from 'console';
 import { DropdownItem, FooterNavLink } from './types';
 import { LuCastle } from 'react-icons/lu';
 
@@ -107,5 +108,24 @@ export const FooterImportantLinks: FooterNavLink[] = [
   {
     name: 'Documentation',
     link: '/documentation'
+  }
+];
+
+export const columns = [
+  { name: 'ID', uid: 'id', sortable: true },
+  { name: 'NAME', uid: 'name', sortable: true },
+  { name: 'DATE', uid: 'date' }
+];
+
+export const users = [
+  {
+    id: 1,
+    name: 'Tony Reichert',
+    date: '22/05/2024'
+  },
+  {
+    id: 2,
+    name: 'Zoey Lang',
+    date: '24/05/2024'
   }
 ];

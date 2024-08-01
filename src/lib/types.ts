@@ -8,3 +8,9 @@ export type DropdownItem = {
   href: string;
   description: string;
 };
+
+export type Users = {
+  id: number;
+  name: string;
+  date: string;
+};

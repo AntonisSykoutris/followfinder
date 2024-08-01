@@ -1,5 +1,7 @@
 'use server';
 
+import { formatTimestampToDate } from '@/lib/utils';
+
 export async function processFiles(formData: FormData) {
   const files: File[] = [];
   const data: { following: any[]; followers: any[] } = {
@@ -26,8 +28,9 @@ export async function processFiles(formData: FormData) {
           (item: { string_list_data: any[] }) =>
             item.string_list_data.map(
               (data: { value: any; timestamp: any }) => ({
-                value: data.value,
-                timestamp: data.timestamp
+                id: data.timestamp,
+                name: data.value,
+                date: formatTimestampToDate(data.timestamp)
               })
             )
         );
@@ -35,8 +38,9 @@ export async function processFiles(formData: FormData) {
         // Handle 'followers_1.json' format
         data.followers = jsonData.flatMap(item =>
           item.string_list_data.map((data: { value: any; timestamp: any }) => ({
-            value: data.value,
-            timestamp: data.timestamp
+            id: data.timestamp,
+            name: data.value,
+            date: formatTimestampToDate(data.timestamp)
           }))
         );
       } else {

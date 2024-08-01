@@ -34,3 +34,12 @@ export const scrolltoHash = function (element_id: string) {
     behavior: 'smooth'
   });
 };
+
+// Helper function to convert timestamp to date string
+export function formatTimestampToDate(timestamp: number): string {
+  const date = new Date(timestamp * 1000); // Assuming timestamp is in seconds
+  const day = String(date.getDate()).padStart(2, '0');
+  const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are zero-based
+  const year = date.getFullYear();
+  return `${day}/${month}/${year}`;
+}
