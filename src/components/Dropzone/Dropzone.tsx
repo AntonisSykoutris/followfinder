@@ -3,11 +3,12 @@
 import { useState, FormEvent, useCallback } from 'react';
 import { FileRejection, useDropzone } from 'react-dropzone';
 import { motion } from 'framer-motion';
+import { useRouter } from 'next/navigation';
 
 import UploadSvg from '../ui/UploadSvg';
 import FilesList from './FilesList';
 import { toast } from 'sonner';
-import { useRouter } from 'next/navigation';
+import { processFiles } from '@/app/actions/upload';
 
 type Props = {
   className?: string;
@@ -76,6 +77,7 @@ export default function Dropzone({ className }: Props) {
     e.preventDefault();
 
     if (!hasTwoFiles) return;
+
     // Create FormData object
     const formData = new FormData();
     files.forEach(file => {
@@ -83,35 +85,19 @@ export default function Dropzone({ className }: Props) {
     });
 
     try {
-      const res = await fetch('https://httpbin.org/post', {
-        headers: {
-          'Content-Type': 'multipart/form-data'
-        },
-        body: formData,
-        method: 'POST'
-      });
+      const results = await processFiles(formData);
+      console.log(results);
+      // Save response data to local storage
+      localStorage.setItem('responseStrings', JSON.stringify(results));
 
-      if (res.ok) {
-        // toast.success('analyzes successfully');
-
-        // Save response data to local storage
-        const result = await res.json();
-        localStorage.setItem('responseStrings', JSON.stringify('testing'));
-
-        // Check if data is saved in local storage before navigating
-        if (localStorage.getItem('responseStrings')) {
-          router.push('/results');
-        } else {
-          toast.error('Failed to save data to local storage');
-        }
+      // Check if data is saved in local storage before navigating
+      if (localStorage.getItem('responseStrings')) {
+        router.push('/results');
       } else {
-        console.log(res);
-        toast.error(
-          'Error while processing the request. Please try again later'
-        );
+        toast.error('Failed to save data to local storage');
       }
     } catch (error) {
-      toast.error(`${error}`);
+      toast.error(`Error processing files: ${error}`);
     }
   };
 
