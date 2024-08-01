@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ChangeEvent, Key, useCallback, useMemo, useState } from 'react';
 import {
   Table,
   TableHeader,
@@ -25,24 +25,22 @@ type Props = {
 };
 
 export default function TableDemo({ users }: Props) {
-  const [filterValue, setFilterValue] = React.useState('');
-  const [selectedKeys, setSelectedKeys] = React.useState<Selection>(
-    new Set([])
-  );
-  const [visibleColumns, setVisibleColumns] = React.useState<Selection>(
+  const [filterValue, setFilterValue] = useState('');
+  const [selectedKeys, setSelectedKeys] = useState<Selection>(new Set([]));
+  const [visibleColumns, setVisibleColumns] = useState<Selection>(
     new Set(INITIAL_VISIBLE_COLUMNS)
   );
-  const [rowsPerPage, setRowsPerPage] = React.useState(5);
-  const [sortDescriptor, setSortDescriptor] = React.useState<SortDescriptor>({
+  const [rowsPerPage, setRowsPerPage] = useState(5);
+  const [sortDescriptor, setSortDescriptor] = useState<SortDescriptor>({
     column: 'age',
     direction: 'ascending'
   });
 
-  const [page, setPage] = React.useState(1);
+  const [page, setPage] = useState(1);
 
   const hasSearchFilter = Boolean(filterValue);
 
-  const headerColumns = React.useMemo(() => {
+  const headerColumns = useMemo(() => {
     if (visibleColumns === 'all') return columns;
 
     return columns.filter(column =>
@@ -50,7 +48,7 @@ export default function TableDemo({ users }: Props) {
     );
   }, [visibleColumns]);
 
-  const filteredItems = React.useMemo(() => {
+  const filteredItems = useMemo(() => {
     let filteredUsers = users;
 
     if (hasSearchFilter) {
@@ -63,14 +61,14 @@ export default function TableDemo({ users }: Props) {
 
   const pages = Math.ceil(filteredItems.length / rowsPerPage);
 
-  const items = React.useMemo(() => {
+  const items = useMemo(() => {
     const start = (page - 1) * rowsPerPage;
     const end = start + rowsPerPage;
 
     return filteredItems.slice(start, end);
   }, [page, filteredItems, rowsPerPage]);
 
-  const sortedItems = React.useMemo(() => {
+  const sortedItems = useMemo(() => {
     return [...items].sort((a: Users, b: Users) => {
       const first = a[sortDescriptor.column as keyof Users] as number;
       const second = b[sortDescriptor.column as keyof Users] as number;
@@ -80,7 +78,7 @@ export default function TableDemo({ users }: Props) {
     });
   }, [sortDescriptor, items]);
 
-  const renderCell = React.useCallback((user: Users, columnKey: React.Key) => {
+  const renderCell = useCallback((user: Users, columnKey: Key) => {
     const cellValue = user[columnKey as keyof Users];
 
     switch (columnKey) {
@@ -105,27 +103,27 @@ export default function TableDemo({ users }: Props) {
     }
   }, []);
 
-  const onNextPage = React.useCallback(() => {
+  const onNextPage = useCallback(() => {
     if (page < pages) {
       setPage(page + 1);
     }
   }, [page, pages]);
 
-  const onPreviousPage = React.useCallback(() => {
+  const onPreviousPage = useCallback(() => {
     if (page > 1) {
       setPage(page - 1);
     }
   }, [page]);
 
-  const onRowsPerPageChange = React.useCallback(
-    (e: React.ChangeEvent<HTMLSelectElement>) => {
+  const onRowsPerPageChange = useCallback(
+    (e: ChangeEvent<HTMLSelectElement>) => {
       setRowsPerPage(Number(e.target.value));
       setPage(1);
     },
     []
   );
 
-  const onSearchChange = React.useCallback((value?: string) => {
+  const onSearchChange = useCallback((value?: string) => {
     if (value) {
       setFilterValue(value);
       setPage(1);
@@ -134,12 +132,12 @@ export default function TableDemo({ users }: Props) {
     }
   }, []);
 
-  const onClear = React.useCallback(() => {
+  const onClear = useCallback(() => {
     setFilterValue('');
     setPage(1);
   }, []);
 
-  const topContent = React.useMemo(() => {
+  const topContent = useMemo(() => {
     return (
       <div className='flex flex-col gap-4'>
         <div className='flex items-end justify-between gap-3'>
@@ -173,10 +171,10 @@ export default function TableDemo({ users }: Props) {
     );
   }, [filterValue, onSearchChange, users.length, onRowsPerPageChange, onClear]);
 
-  const bottomContent = React.useMemo(() => {
+  const bottomContent = useMemo(() => {
     return (
-      <div className='flex items-center justify-between px-2 py-2'>
-        <span className='text-small text-default-400 w-[30%]'></span>
+      <div className='flex items-center justify-center px-2 py-2 lg:justify-between'>
+        <span className='text-small text-default-400 hidden w-[30%] lg:inline-block'></span>
         <Pagination
           isCompact
           showControls
@@ -215,8 +213,7 @@ export default function TableDemo({ users }: Props) {
       bottomContent={bottomContent}
       bottomContentPlacement='outside'
       classNames={{
-        wrapper: 'max-h-[382px]',
-        base: 'w-1/2'
+        wrapper: 'max-h-[382px]'
       }}
       selectedKeys={selectedKeys}
       selectionMode='none'
