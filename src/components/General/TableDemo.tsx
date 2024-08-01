@@ -152,13 +152,13 @@ export default function TableDemo({ users }: Props) {
           />
         </div>
         <div className='flex items-center justify-between'>
-          <span className='text-default-400 text-small'>
+          <span className='text-small text-default-400'>
             Total {users.length} users
           </span>
-          <label className='text-default-400 text-small flex items-center'>
+          <label className='flex items-center text-small text-default-400'>
             Rows per page:
             <select
-              className='text-default-400 text-small bg-transparent outline-none'
+              className='bg-transparent text-small text-default-400 outline-none'
               onChange={onRowsPerPageChange}
             >
               <option value='5'>5</option>
@@ -174,7 +174,7 @@ export default function TableDemo({ users }: Props) {
   const bottomContent = useMemo(() => {
     return (
       <div className='flex items-center justify-center px-2 py-2 lg:justify-between'>
-        <span className='text-small text-default-400 hidden w-[30%] lg:inline-block'></span>
+        <span className='hidden w-[30%] text-small text-default-400 lg:inline-block'></span>
         <Pagination
           isCompact
           showControls
