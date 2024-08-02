@@ -9,8 +9,15 @@ export type DropdownItem = {
   description: string;
 };
 
+export type JsonUser = {
+  href: string;
+  value: string;
+  timestamp: number;
+};
+
 export type Users = {
   id: number;
+  href: string;
   name: string;
   date: string;
 };

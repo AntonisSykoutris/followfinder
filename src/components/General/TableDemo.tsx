@@ -1,4 +1,11 @@
-import React, { ChangeEvent, Key, useCallback, useMemo, useState } from 'react';
+import React, {
+  ChangeEvent,
+  Key,
+  useCallback,
+  useEffect,
+  useMemo,
+  useState
+} from 'react';
 import {
   Table,
   TableHeader,
@@ -9,6 +16,7 @@ import {
   Input,
   Button,
   User,
+  Link,
   Pagination,
   Selection,
   SortDescriptor
@@ -17,6 +25,7 @@ import { columns } from '@/lib/data';
 import { SearchIcon } from 'lucide-react';
 import UIAvatar from 'react-ui-avatars';
 import { Users } from '@/lib/types';
+import { generateBackgroundColor } from '@/lib/utils';
 
 const INITIAL_VISIBLE_COLUMNS = ['name', 'date'];
 
@@ -32,7 +41,7 @@ export default function TableDemo({ users }: Props) {
   );
   const [rowsPerPage, setRowsPerPage] = useState(5);
   const [sortDescriptor, setSortDescriptor] = useState<SortDescriptor>({
-    column: 'age',
+    column: 'name',
     direction: 'ascending'
   });
 
@@ -61,36 +70,61 @@ export default function TableDemo({ users }: Props) {
 
   const pages = Math.ceil(filteredItems.length / rowsPerPage);
 
-  const items = useMemo(() => {
-    const start = (page - 1) * rowsPerPage;
-    const end = start + rowsPerPage;
+  const paginatedSortedItems = useMemo(() => {
+    // Sorting the filteredItems array based on the sortDescriptor
+    const sortedItems = [...filteredItems].sort((a: Users, b: Users) => {
+      let first, second;
 
-    return filteredItems.slice(start, end);
-  }, [page, filteredItems, rowsPerPage]);
+      if (sortDescriptor.column === 'date') {
+        // Convert date strings to Date objects for comparison
+        first = new Date(a['id' as keyof Users] as string);
+        second = new Date(b['id' as keyof Users] as string);
+        console.log(first);
+        console.log(second);
+      } else {
+        first = a[sortDescriptor.column as keyof Users] as number;
+        second = b[sortDescriptor.column as keyof Users] as number;
+      }
 
-  const sortedItems = useMemo(() => {
-    return [...items].sort((a: Users, b: Users) => {
-      const first = a[sortDescriptor.column as keyof Users] as number;
-      const second = b[sortDescriptor.column as keyof Users] as number;
       const cmp = first < second ? -1 : first > second ? 1 : 0;
 
       return sortDescriptor.direction === 'descending' ? -cmp : cmp;
     });
-  }, [sortDescriptor, items]);
+
+    // Paginating the sorted items
+    const start = (page - 1) * rowsPerPage;
+    const end = start + rowsPerPage;
+
+    return sortedItems.slice(start, end);
+  }, [page, filteredItems, rowsPerPage, sortDescriptor]);
 
   const renderCell = useCallback((user: Users, columnKey: Key) => {
     const cellValue = user[columnKey as keyof Users];
 
     switch (columnKey) {
       case 'name':
+        const backgroundColor = generateBackgroundColor(user.name);
         return (
           <User
             avatarProps={{
               radius: 'lg',
-              icon: <UIAvatar name={user.name} size={128} />
+              icon: (
+                <UIAvatar
+                  name={user.name}
+                  background={backgroundColor}
+                  size={128}
+                />
+              )
             }}
             name={cellValue}
-          ></User>
+            description={
+              <Link href={user.href} size='sm' isExternal>
+                @profile/{user.name}
+              </Link>
+            }
+          >
+            {user.href}
+          </User>
         );
       case 'role':
         return (
@@ -158,7 +192,7 @@ export default function TableDemo({ users }: Props) {
           <label className='flex items-center text-small text-default-400'>
             Rows per page:
             <select
-              className='bg-transparent text-small text-default-400 outline-none'
+              className='bg-transparent text-small text-default-700 outline-none hover:cursor-pointer hover:text-[#833ab4]'
               onChange={onRowsPerPageChange}
             >
               <option value='5'>5</option>
@@ -179,9 +213,10 @@ export default function TableDemo({ users }: Props) {
           isCompact
           showControls
           showShadow
+          initialPage={1}
           color='primary'
           page={page}
-          total={pages}
+          total={pages ? pages : 1}
           onChange={setPage}
         />
         <div className='hidden w-[30%] justify-end gap-2 sm:flex'>
@@ -234,7 +269,7 @@ export default function TableDemo({ users }: Props) {
           </TableColumn>
         )}
       </TableHeader>
-      <TableBody emptyContent={'No users found'} items={sortedItems}>
+      <TableBody emptyContent={'No users found'} items={paginatedSortedItems}>
         {item => (
           <TableRow key={item.id}>
             {columnKey => <TableCell>{renderCell(item, columnKey)}</TableCell>}

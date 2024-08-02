@@ -4,7 +4,6 @@ import Section from '@/components/General/Section';
 import TableDemo from '@/components/General/TableDemo';
 import { Users } from '@/lib/types';
 import { Card, CardHeader, CardBody } from '@nextui-org/react';
-import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 
 type Props = {};
@@ -31,26 +30,22 @@ export default function ResultsPage({}: Props) {
   }, []); // Empty dependency array means this useEffect runs once on component mount
 
   return (
-    <Section className=' mt-20 grid h-fit grid-cols-1 gap-4 2xl:grid-cols-2'>
+    <Section className=' mt-20 grid h-fit grid-cols-1  items-center gap-4 2xl:grid-cols-2'>
       {/* <Link href='/'>return home</Link>; */}
       {/* <section>
         <h2>Following</h2>
         <TableDemo users={followingData} />
       </section> */}
-      <Card className='h-[66vh] max-w-[60rem]'>
+      <Card className='h-[70vh] lg:h-[66vh]'>
         <CardHeader className='flex-col items-start px-4 pb-0 pt-2'>
-          <p className='text-tiny font-bold uppercase'>Daily Mix</p>
-          <small className='text-default-500'>12 Tracks</small>
           <h4 className='text-large font-bold'>Followers List</h4>
         </CardHeader>
         <CardBody className='overflow-visible py-2'>
           <TableDemo users={followersData} />
         </CardBody>
       </Card>
-      <Card className='h-[70vh] max-w-[60rem] lg:h-[66vh]'>
+      <Card className='h-[70vh] lg:h-[66vh]'>
         <CardHeader className='flex-col items-start px-4 pb-0 pt-2'>
-          <p className='text-tiny font-bold uppercase'>Daily Mix</p>
-          <small className='text-default-500'>12 Tracks</small>
           <h4 className='text-large font-bold'>Following List</h4>
         </CardHeader>
         <CardBody className='overflow-visible py-2'>

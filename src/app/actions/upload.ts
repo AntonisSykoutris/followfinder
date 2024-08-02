@@ -1,5 +1,6 @@
 'use server';
 
+import { JsonUser } from '@/lib/types';
 import { formatTimestampToDate } from '@/lib/utils';
 
 export async function processFiles(formData: FormData) {
@@ -26,19 +27,19 @@ export async function processFiles(formData: FormData) {
         // Handle 'following.json' format
         data.following = jsonData.relationships_following.flatMap(
           (item: { string_list_data: any[] }) =>
-            item.string_list_data.map(
-              (data: { value: any; timestamp: any }) => ({
-                id: data.timestamp,
-                name: data.value,
-                date: formatTimestampToDate(data.timestamp)
-              })
-            )
+            item.string_list_data.map((data: JsonUser) => ({
+              id: data.timestamp,
+              href: data.href,
+              name: data.value,
+              date: formatTimestampToDate(data.timestamp)
+            }))
         );
       } else if (Array.isArray(jsonData)) {
         // Handle 'followers_1.json' format
         data.followers = jsonData.flatMap(item =>
-          item.string_list_data.map((data: { value: any; timestamp: any }) => ({
+          item.string_list_data.map((data: JsonUser) => ({
             id: data.timestamp,
+            href: data.href,
             name: data.value,
             date: formatTimestampToDate(data.timestamp)
           }))
