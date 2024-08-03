@@ -33,7 +33,7 @@ type Props = {
   users: Users[];
 };
 
-export default function TableDemo({ users }: Props) {
+export default function DataTable({ users }: Props) {
   const [filterValue, setFilterValue] = useState('');
   const [selectedKeys, setSelectedKeys] = useState<Selection>(new Set([]));
   const [visibleColumns, setVisibleColumns] = useState<Selection>(

@@ -19,7 +19,7 @@ export default function PrivacyPolicyPage() {
         <a href='https://followfinder.vercel.app/'>
           https://followfinder.vercel.app/
         </a>
-        . I take your privacy seriously. To better protect your privacy, I
+        . We take your privacy seriously. To better protect your privacy, We
         provide this privacy policy notice explaining the way your personal
         information is collected and used.
       </p>
@@ -54,7 +54,7 @@ export default function PrivacyPolicyPage() {
         parties.
       </p>
       <p>
-        I have included links on this website for your use and reference. I am
+        We have included links on this website for your use and reference. We am
         not responsible for the privacy policies on these websites. You should
         be aware that the privacy policies of these websites may differ from my
         own.
@@ -74,8 +74,8 @@ export default function PrivacyPolicyPage() {
       <p>
         The security of your personal information is important to me, but
         remember that no method of transmission over the Internet, or method of
-        electronic storage, is 100% secure. While I strive to use commercially
-        acceptable means to protect your personal information, I cannot
+        electronic storage, is 100% secure. While We strive to use commercially
+        acceptable means to protect your personal information, We cannot
         guarantee its absolute security.
       </p>
       <p className='mt-3'>
@@ -84,10 +84,10 @@ export default function PrivacyPolicyPage() {
       <p>
         This Privacy Policy is effective as of 2024-03-26 and will remain in
         effect except concerning any changes in its provisions in the future,
-        which will be in effect immediately after being posted on this page. I
+        which will be in effect immediately after being posted on this page. We
         reserve the right to update or change my Privacy Policy at any time and
-        you should check this Privacy Policy periodically. If I make any
-        material changes to this Privacy Policy, I will notify you either
+        you should check this Privacy Policy periodically. If We make any
+        material changes to this Privacy Policy, We will notify you either
         through the email address you have provided me or by placing a prominent
         notice on my website.
       </p>

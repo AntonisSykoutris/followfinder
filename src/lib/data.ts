@@ -1,6 +1,7 @@
 import { timeStamp } from 'console';
 import { DropdownItem, FooterNavLink } from './types';
 import { LuCastle } from 'react-icons/lu';
+import { Table, UploadCloud, UserCheck, UserX } from 'lucide-react';
 
 export const MOTION_SLIDE_DEFAULT_DELAY = 0.5;
 
@@ -30,54 +31,36 @@ export const dropdownItems: DropdownItem[] = [
     description: 'For sighted users to preview content available behind a link.'
   },
   {
-    title: 'Services',
-    href: '/services',
-    description:
-      'Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.'
-  },
-  {
     title: 'Privacy Policy',
     href: '/privacy-policy',
     description: 'Visually or semantically separates content.'
-  },
-  {
-    title: 'FAQ',
-    href: '/faq',
-    description:
-      'A set of layered sections of content—known as tab panels—that are displayed one at a time.'
-  },
-  {
-    title: 'Tooltip',
-    href: '/docs/primitives/tooltip',
-    description:
-      'A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.'
   }
 ];
 
 export const Features = [
   {
-    name: 'Push to deploy',
+    name: 'Identify Non-Mutual Followers',
     description:
-      'Morbi viverra dui mi arcu sed. Tellus semper adipiscing suspendisse semper morbi. Odio urna massa nunc massa.',
-    icon: LuCastle
+      'The app quickly identifies users you follow who do not follow you back. This helps you easily manage your following list by highlighting one-sided connections.',
+    icon: UserX
   },
   {
-    name: 'SSL certificates',
+    name: 'Detect Unreciprocated Followers',
     description:
-      'Sit quis amet rutrum tellus ullamcorper ultricies libero dolor eget. Sem sodales gravida quam turpis enim lacus amet.',
-    icon: LuCastle
+      "The app also identifies users who follow you, but you don't follow them back. This feature allows you to engage with followers you may have missed or consider following them back.",
+    icon: UserCheck
   },
   {
-    name: 'Simple queues',
+    name: 'Detailed Summary Tables',
     description:
-      'Quisque est vel vulputate cursus. Risus proin diam nunc commodo. Lobortis auctor congue commodo diam neque.',
-    icon: LuCastle
+      'The app generates clear and organized tables displaying the lists of unreciprocated follows and followers. This makes it easy to visualize and manage your Instagram connections efficiently.',
+    icon: Table
   },
   {
-    name: 'Advanced security',
+    name: 'User-Friendly JSON Uploads',
     description:
-      'Arcu egestas dolor vel iaculis in ipsum mauris. Tincidunt mattis aliquet hac quis. Id hac maecenas ac donec pharetra eget.',
-    icon: LuCastle
+      'The app allows users to upload JSON files containing their follower and following data. With a simple upload process, users can quickly get actionable insights without any manual data entry.',
+    icon: UploadCloud
   }
 ];
 
@@ -89,16 +72,12 @@ export const FooterCompanyLinks: FooterNavLink[] = [
   {
     name: 'Services',
     link: '#'
-  },
-  {
-    name: 'FAQ',
-    link: '/faq'
   }
 ];
 
 export const FooterImportantLinks: FooterNavLink[] = [
   {
-    name: 'Terms of Services',
+    name: 'Terms of Service',
     link: '/terms-of-service'
   },
   {

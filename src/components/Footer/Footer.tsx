@@ -24,10 +24,10 @@ export default function Footer({}: Props) {
                 <div className='md:col-span-12 lg:col-span-4'>
                   <UploadSvg />
                   <p className='mt-6 text-primary-foreground'>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                    ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    © 2024 Instagram Follower/Following Analyzer | Developed
+                    with privacy and user data protection in mind. All data
+                    processing is done locally and securely. We do not store or
+                    share your personal information.
                   </p>
                   <div className='mt-6 flex justify-center gap-x-5   sm:justify-start'>
                     <FooterSocial />

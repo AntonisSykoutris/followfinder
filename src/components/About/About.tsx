@@ -10,7 +10,7 @@ type Props = {};
 
 export default function About({}: Props) {
   return (
-    <Section className='relative h-[160vh] overflow-x-hidden sm:h-screen'>
+    <Section className='relative h-fit overflow-x-hidden overflow-y-hidden'>
       <LeavesSvg className='absolute -z-20 h-screen' />
       <motion.div
         className='mx-auto max-w-2xl lg:text-center'
@@ -19,13 +19,14 @@ export default function About({}: Props) {
         variants={slideInFromTop()}
       >
         <p className='mt-2 text-3xl font-bold tracking-tight sm:text-4xl'>
-          Everything you need to{' '}
-          <span className='text-instagram'>deploy your app</span>
+          <span className='text-instagram'>Instagram</span> Follower/Following
+          Analyzer
         </p>
         <p className='mt-6 text-lg leading-8 '>
-          Quis tellus eget adipiscing convallis sit sit eget aliquet quis.
-          Suspendisse eget egestas a elementum pulvinar et feugiat blandit at.
-          In mi viverra elit nunc.
+          <span className='font-bold'>Easily and legally</span> manage your
+          Instagram connections by identifying non-mutual followers,
+          unreciprocated followers, and viewing detailed summary tables—all
+          through simple JSON file uploads.
         </p>
       </motion.div>
       <motion.div
